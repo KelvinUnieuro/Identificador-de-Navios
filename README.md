@@ -1,0 +1,1 @@
+# Não estocar branch!! Termina de fazer a task ou qualquer mínima modificação que seja e fazer o push da branch. Cuidado ao usar o "main", criar outras branchs e mergear quando tiver td certo!! Br br fazer um trabalho top 👨‍💻

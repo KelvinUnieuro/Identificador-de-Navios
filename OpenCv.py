@@ -2,12 +2,10 @@ import cv2 as cv
 import numpy as np
 
 # Para carregar o arquivo xml já treinado
-carregaAlgoritmo = cv.CascadeClassifier('testes-1/haarcascades/first_cascade.xml')
+carregaAlgoritmo = cv.CascadeClassifier('main-project/haarcascades/first_cascade.xml')
 
 # Pegando a imagem
-
-# imagem = cv.imread('testes-1/assets/varios-barco18.tiff')
-imagem = cv.imread('testes-1/assets/varios-barco18-img-grande.png')
+imagem = cv.imread('main-project/assets/varios-barco18.tiff')
 
 # Deixando a imagem cinza para maior eficiência do opencv
 if imagem is None:

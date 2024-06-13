@@ -1,41 +1,48 @@
 import cv2 as cv
 import numpy as np
+import os
+import time
 
 # Para carregar o arquivo xml já treinado
 carregaAlgoritmo = cv.CascadeClassifier('main-project/haarcascades/first_cascade.xml')
 
 # Pegando a imagem
-imagem = cv.imread('main-project/assets/varios-barco18.tiff')
+imagem = cv.imread('main-project/assets/imgPoucoGrande.tiff')
 
 # Deixando a imagem cinza para maior eficiência do opencv
 if imagem is None:
     print("Erro ao carregar a imagem")
 else:
-    # Divide a imagem em 4 partes
-    altura, largura = imagem.shape[:2]
-    sub_imagens = [imagem[:altura//2, :largura//2], imagem[:altura//2, largura//2:],
-                   imagem[altura//2:, :largura//2], imagem[altura//2:, largura//2:]] 
-    imagemCinza = cv.cvtColor(imagem, cv.COLOR_BGR2GRAY)
+    imagem_cinza = cv.cvtColor(imagem, cv.COLOR_BGR2GRAY)
     
-# Processa cada parte da imagem
-sub_imagens_processadas = []
-for sub_imagem in sub_imagens:
-        sub_imagem_cinza = cv.cvtColor(sub_imagem, cv.COLOR_BGR2GRAY)
-        boats = carregaAlgoritmo.detectMultiScale(sub_imagem_cinza, scaleFactor=1.4, minNeighbors=14, minSize=(150, 150), maxSize=(250, 250))
-        print (boats)
-        for (x, y, l, a) in boats:
-            cv.rectangle(sub_imagem, (x, y), (x + l, y + a), (0, 255, 0), 5)
-        sub_imagens_processadas.append(sub_imagem)
+# Processa a imagem
+num_boats = 0
+start_time = time.time() # Inicia o contador de tempo
+boats = carregaAlgoritmo.detectMultiScale(imagem_cinza, scaleFactor=1.4, minNeighbors=14, minSize=(150, 150), maxSize=(250, 250))
+num_boats += len(boats) # Incrementa o contador de navios
+for (x, y, l, a) in boats:
+    cv.rectangle(imagem, (x, y), (x + l, y + a), (0, 255, 0), 5)
+end_time = time.time() # Finaliza o contador de tempo
 
-# Junta as partes da imagem novamente
-imagem_processada = np.concatenate((np.concatenate(sub_imagens_processadas[:2], axis=1),
-                                        np.concatenate(sub_imagens_processadas[2:], axis=1)), axis=0)
+# Calcula o tempo decorrido em segundos
+tempo_decorrido = end_time - start_time
 
-largura = 1400
-altura = 720
-imagem = cv.resize(imagem, (largura, altura))
+# Convertendo o tempo decorrido para hh:mm:ss:ms
+tempo_restante = time.strftime("%H:%M:%S:", time.gmtime(tempo_decorrido))
+milissegundos = int((tempo_decorrido - int(tempo_decorrido)) * 1000)
+tempo_restante += f"{milissegundos:03d}"
 
-cv.imshow('Boats', imagem)
-cv.waitKey(0)
+print(f"Tempo decorrido: {tempo_restante} segundos")
+print(f"Número de navios detectados: {num_boats}")
 
+# Redimensiona a imagem processada apenas para visualização ou salvamento
+largura_visualizacao = 1400
+altura_visualizacao = 720
+imagem_processada = cv.resize(imagem, (largura_visualizacao, altura_visualizacao))
+
+# Salvando a imagem
+contador = 1
+while os.path.exists(f"Imagem_{contador}.png"):
+    contador += 1
+cv.imwrite(f"Imagem_{contador}.png", imagem_processada)
 

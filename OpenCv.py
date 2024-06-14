@@ -4,10 +4,10 @@ import os
 import time
 
 # Para carregar o arquivo xml já treinado
-carregaAlgoritmo = cv.CascadeClassifier('main-project/haarcascades/first_cascade.xml')
+carregaAlgoritmo = cv.CascadeClassifier('search-boats/main-project/haarcascades/first_cascade.xml')
 
 # Pegando a imagem
-imagem = cv.imread('main-project/assets/imgPoucoGrande.tiff')
+imagem = cv.imread('search-boats/main-project/assets/imgPoucoGrande.tiff')
 
 # Deixando a imagem cinza para maior eficiência do opencv
 if imagem is None:

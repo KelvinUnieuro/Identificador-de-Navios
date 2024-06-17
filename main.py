@@ -1,21 +1,26 @@
 import cv2 as cv
 import numpy as np
-import pyvips as vips
-import time
+# import time
 import os
 
-vipshome = 'C:\temp\vips-dev-w64-all-8.15.2\vips-dev-8.15\bin'
-os.environ['PATH'] = vipshome + ';' + os.environ['PATH']
+add_dll_dir = getattr(os, "add_dll_directory", None)
+vipsbin = r"C:\temp\vips-dev-w64-all-8.15.2\vips-dev-8.15\bin"  # LibVIPS binary dir
+if callable(add_dll_dir):
+    add_dll_dir(vipsbin)
+else:   
+    os.environ["PATH"] = os.pathsep.join((vipsbin, os.environ["PATH"]))
+
+import pyvips
 
 num_boats = 0
 
 # Pegando a imagem
 # imagem = cv.imread('main-project/assets/varios-barco18.tiff')
-imagem = vips.Image.new_from_file('main-project/assets/varios-barco18.tiff', access='sequential')
+imagem = pyvips.Image.new_from_file('main-project/assets/varios-barco18.tiff')
 
 # Ajustando quantas partes a imagem terá e qual será a altura e largura de cada uma
 largura, altura = imagem.width, imagem.height
-num_partes = 10
+num_partes = 2
 parte_largura = largura // num_partes
 parte_altura = altura // num_partes 
 
@@ -23,6 +28,7 @@ parte_altura = altura // num_partes
 carregaAlgoritmo = cv.CascadeClassifier('main-project/haarcascades/first_cascade.xml')
 
 for i in range(num_partes):
+    linha_imagem = None
     for j in range(num_partes):
         # Define as coordenadas de recorte para esta parte
         x1 = i * parte_largura
@@ -59,11 +65,12 @@ for i in range(num_partes):
         for (x, y, l, a) in boats:
             cv.rectangle(parte_np, (x, y), (x + l, y + a), (0, 255, 0), 2)
             cv.rectangle(parte_np, (x, y), (x + l, y + a), (0, 255, 0), 5)
+            num_boats += 1  # Incrementa o contador de barcos
 
         # Salva a parte da imagem com os barcos detectados
         cv.imwrite(f'parte_{i}_{j}.jpg', parte_np)
-
-
+        
+print(f'Número total de barcos detectados: {num_boats}')
 
 
 

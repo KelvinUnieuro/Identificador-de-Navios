@@ -15,7 +15,7 @@ imagem = pyvips.Image.new_from_file('main-project/assets/replicated_image.tiff')
 
 # Definindo o número de partes que a imagem será dividida e o tamanho de cada parte
 largura, altura = imagem.width, imagem.height
-num_partes = 16
+num_partes = 2
 parte_largura = largura
 parte_altura = altura // num_partes
 

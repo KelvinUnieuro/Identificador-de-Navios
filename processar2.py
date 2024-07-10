@@ -41,7 +41,7 @@ def processar_parte(parte_filename):
                               shape=[parte_imagem.height, parte_imagem.width])
 
         # Convertendo para BGR (OpenCV usa BGR por padrão)
-        parte_np = cv.cvtColor(parte_np, cv.COLOR_RGB2BGR)
+        parte_np = cv.cvtColor(parte_np, cv.COLOR_GRAY2BGR)
 
         # Detectando os barcos na parte da imagem
         boats = carregaAlgoritmo.detectMultiScale(parte_np,

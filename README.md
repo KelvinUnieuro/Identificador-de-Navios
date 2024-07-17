@@ -45,9 +45,9 @@ Certifique-se de seguir os pré-requisitos do sistema para que o programa funcio
 * Imagem de no máximo 4.0gb no formato "tiff"
 * Python v3.12.4
 * Pip v24.0
-* pyvips
-* OpenCv
-* NumPy
+* pyvips v2.2.3
+* OpenCv v4.10.0
+* NumPy v1.26.4
 
 ### Instalando pyvips
 

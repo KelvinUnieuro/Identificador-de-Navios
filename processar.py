@@ -1,12 +1,11 @@
-# Importando as bibliotecas necessárias
-import cv2 as cv  # OpenCV para processamento de imagem
-import numpy as np  # NumPy para manipulação de arrays
-import os  # os para manipulação do sistema operacional
-import concurrent.futures  # concurrent.futures para multithreading
-import pyvips  # pyvips para manipulação de imagens grandes
-import time  # time para medir o tempo de execução
-from datetime import timedelta  # timedelta para formatar o tempo de execução
-import threading  # threading para sincronização
+import cv2 as cv 
+import numpy as np 
+import os
+import concurrent.futures
+import pyvips
+import time
+from datetime import timedelta
+import threading
 
 # Carregando o arquivo xml treinado para detecção de barcos
 carregaAlgoritmo = cv.CascadeClassifier('main-project/haarcascades/first_cascade.xml')

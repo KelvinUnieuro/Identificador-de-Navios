@@ -37,7 +37,7 @@ O Projeto Identificador de Navios é uma aplicação que utiliza técnicas de vi
 
 ## 📋Pré-requisitos
 
-Certifique-se de seguir os pré-requisitos do sistema para que o programa funcione corretamente.
+Lembre-se de seguir os pré-requisitos do sistema para que o programa funcione corretamente.
 
 * Imagem de no máximo 4.0gb no formato "tiff"
 * Python v3.12.4
@@ -52,22 +52,22 @@ Certifique-se de seguir os pré-requisitos do sistema para que o programa funcio
 
    - Para Windows, você pode baixar o pacote `vips-dev-w64-all v8.15.2` do repositório [libvips/libvips](https://github.com/libvips/libvips/releases).
 
-2. Extraia o conteúdo do arquivo baixado em um diretório de sua escolha, por exemplo, `C:\vips`.
+2. Extraia o conteúdo do arquivo baixado em um diretório de sua escolha, por exemplo, `C:\vips`.  
 
-3. Adicione o diretório `bin` do `pyvips` ao `PATH` nas variáveis de ambiente do sistema, em varíaveis de usuário:
+3. Adicione o diretório `bin` do `pyvips` ao `PATH` nas variáveis de ambiente do sistema, em varíaveis de usuário:  
 
    - No Windows:
      1. Abra a barra de pesquisa do windows e encontre "Editar as variáveis de ambiente do sistema.
      2. Clique em "Variáveis de Ambiente"
      3. Na seção "Variáveis do Sistema", encontre a variável `Path`, em  variáveis de usuário e edite-a.
-     4. Adicione o caminho para o diretório `bin` do `pyvips`, por exemplo: `C:\vips\bin`.
+     4. Adicione o caminho para o diretório `bin` do `pyvips`, por exemplo: `C:\vips\bin`.  
 
 4. Instale o pacote `pyvips` no seu ambiente Python:
 
    ```sh
-   pip install pyvips
+   pip install pyvips  
 
-5. Certifique-se de substituir o caminho da variável "vipsbin" no script "dividir-imagem.py" pelo mesmo caminho `bin` de seu `pyvips-all`
+5. Substitua o caminho da variável "vipsbin" no script "dividir-imagem.py" pelo mesmo caminho `bin` de seu `pyvips-all`
 
 <br>
 

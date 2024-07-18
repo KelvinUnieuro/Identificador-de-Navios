@@ -1,9 +1,6 @@
 Bem-vindo ao Identificador de Navios! Utilizamos diversas técnologias nesse projeto, desde aprendizado de máquina até paralelização com multithreading, para conseguir maior eficiência de processamento ao buscar os navios dentro da imagem grande criada.
 
 ![ezgif com-animated-gif-maker](https://github.com/user-attachments/assets/df5548e0-66e6-4b13-a20f-ed7a85187517)
-![print02](https://github.com/user-attachments/assets/32698fba-84a5-48f6-8975-5fcde79a6afa)
-![print03](https://github.com/user-attachments/assets/a289db7a-234e-44ed-aef4-81d83af934e9)
-
 
 ## Índice
 
